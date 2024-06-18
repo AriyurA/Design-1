@@ -1,0 +1,34 @@
+class MinStack:
+
+    #Using list acting as a stack to keep track of current item in stack and respective minimum. Using min value to streamline finding minimum and clearing the respective saved minimum when value is stored
+
+    def __init__(self):
+        self.arr = []
+        self.min = None
+
+    def push(self, val: int) -> None:
+        if self.min is None or val < self.min:
+            self.min = val
+        self.arr.append((self.min,val))
+        
+
+    def pop(self) -> None:
+        self.arr.pop()
+        if self.arr:
+            self.min = self.arr[-1][0]
+        else:
+            self.min = None
+
+    def top(self) -> int:
+        return self.arr[-1][1]
+
+    def getMin(self) -> int:
+        return self.arr[-1][0]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
